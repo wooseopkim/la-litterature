@@ -1,0 +1,25 @@
+<script lang="ts">
+	import firebase from 'firebase/app';
+  import { auth } from '../../firebase';
+  import AuthButton from './AuthButton.svelte';
+
+  let loggedIn: 'loading' | 'yes' | 'no' = 'loading';
+  let userName: string;
+  auth.onAuthStateChanged((x) => {
+    loggedIn = Boolean(x) ? 'yes' : 'no';
+    userName = x.displayName;
+  })
+
+	const googleProvider = {
+		instance: new firebase.auth.GoogleAuthProvider(),
+		name: '구글'
+  };
+</script>
+
+{#if loggedIn === 'yes'}
+  <div>{userName}</div>
+{:else if loggedIn === 'no'}
+  <AuthButton provider={googleProvider} />
+{:else}<!-- loggedIn === 'loading' -->
+  <div>로딩...</div>
+{/if}
