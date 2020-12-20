@@ -1,12 +1,12 @@
-import AuthPanel from './AuthPanel.svelte';
+import Toolbar from './Toolbar.svelte';
 import { render, act } from '@testing-library/svelte';
 
 jest.mock('../../firebase-shortcut');
 const { __setAuthState } = require('../../firebase-shortcut');
 
-describe('AuthPanel', () => {
+describe('Toolbar', () => {
   it('should render loader', () => {
-    const { queryByText } = render(AuthPanel);
+    const { queryByText } = render(Toolbar);
 
     const result = queryByText('로딩...');
     expect(result).toBeTruthy();
@@ -14,7 +14,7 @@ describe('AuthPanel', () => {
 
   it('should render user when signed in', async () => {
     const displayName = '우섭';
-    const { queryByText } = render(AuthPanel);
+    const { queryByText } = render(Toolbar);
 
     __setAuthState({ displayName });
     await act();
@@ -24,7 +24,7 @@ describe('AuthPanel', () => {
   });
 
   it('should render button when not signed in', async () => {
-    const { queryByRole } = render(AuthPanel);
+    const { queryByRole } = render(Toolbar);
 
     __setAuthState(null);
     await act();

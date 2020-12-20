@@ -1,6 +1,10 @@
 <script lang="ts">
+  import { SkeletonText } from 'carbon-components-svelte';
   import { db } from '../../firebase-shortcut';
   import PostItem from './PostItem.svelte';
+
+  const placeholderCount = 4;
+  const placeholderSize = 8;
 
   let posts;
 
@@ -14,10 +18,32 @@
   })();
 </script>
 
-{#if posts}
-  {#each posts as post}
-    <PostItem data={post} />
-  {/each}
-{:else}
-  <div>로딩...</div>
-{/if}
+<div>
+  {#if posts}
+    {#each posts as post}
+      <PostItem data={post} />
+    {/each}
+  {:else}
+    {#each new Array(placeholderCount) as _}
+      <SkeletonText class="skeleton" paragraph lines={placeholderSize} />
+    {/each}
+  {/if}
+</div>
+
+<style>
+  div {
+    padding-top: 1rem;
+    padding-bottom: 32rem;
+    width: 60em;
+  }
+
+  div > :global(*) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  div > :global(.skeleton) {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+</style>

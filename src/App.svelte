@@ -1,18 +1,35 @@
 <script lang="ts">
-  import AuthPanel from './components/auth/AuthPanel.svelte';
+  import Toolbar from './components/toolbar/Toolbar.svelte';
   import PostList from './components/posts/PostList.svelte';
+  import 'carbon-components-svelte/css/white.css';
 </script>
 
 <main>
-  <AuthPanel />
+  <Toolbar />
   <PostList />
 </main>
 
 <style>
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+  :global(body) {
+    display: flex;
+    justify-content: center;
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(https://pixabay.com/get/53e8d643435aaa14f6d1867dda2c34791439dfec4e5077497d2b73d59e4ac2_1920.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  :global(html),
+  :global(body),
+  main {
+    height: initial;
+  }
 </style>

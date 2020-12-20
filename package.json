@@ -16,6 +16,7 @@
     "@tsconfig/svelte": "^1.0.0",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.14",
+    "carbon-components-svelte": "^0.26.0",
     "jest": "^26.6.3",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",

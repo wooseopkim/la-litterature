@@ -1,5 +1,6 @@
 <script lang="ts">
   import firebase from 'firebase';
+  import { Button } from 'carbon-components-svelte';
   import { auth } from '../../firebase-shortcut';
 
   export let provider: {
@@ -14,5 +15,4 @@
   }
 </script>
 
-<h3>{provider.name}</h3>
-<button on:click={onClick}>인증</button>
+<Button on:click={onClick}>{provider.name}</Button>
