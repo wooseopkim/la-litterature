@@ -22,6 +22,8 @@
 
 <section>
   <div>
+    <h1>라 리테라튀르</h1>
+
     {#if loggedIn === 'yes'}
       <Button as let:props kind="secondary">
         <span {...props}>{userName}</span>
@@ -51,7 +53,11 @@
   div {
     width: 60em;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: space-between;
+  }
+
+  h1 {
+    color: white;
+    filter: drop-shadow(0 0 0.3rem white);
   }
 </style>
