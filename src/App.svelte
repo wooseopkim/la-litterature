@@ -4,6 +4,7 @@
 
 	let posts = [];
 
+	// TODO: add pagination logic
 	const query = db.collection('posts').get();
 	(async () => {
 		(await query).forEach((x) => {

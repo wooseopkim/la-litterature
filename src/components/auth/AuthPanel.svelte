@@ -12,6 +12,7 @@
 
 	const googleProvider = {
 		instance: new firebase.auth.GoogleAuthProvider(),
+    // TODO: i18n
 		name: '구글'
   };
 </script>
@@ -21,5 +22,6 @@
 {:else if loggedIn === 'no'}
   <AuthButton provider={googleProvider} />
 {:else}<!-- loggedIn === 'loading' -->
+  <!-- TODO: show as a circular progress -->
   <div>로딩...</div>
 {/if}
