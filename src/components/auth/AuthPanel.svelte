@@ -1,13 +1,15 @@
 <script lang="ts">
   import firebase from 'firebase/app';
-  import { auth } from '../../firebase';
+  import { auth } from '../../firebase-shortcut';
   import AuthButton from './AuthButton.svelte';
 
   let loggedIn: 'loading' | 'yes' | 'no' = 'loading';
   let userName: string;
   auth.onAuthStateChanged((x) => {
     loggedIn = Boolean(x) ? 'yes' : 'no';
-    userName = x.displayName;
+    if (x) {
+      userName = x.displayName;
+    };
   })
 
   const googleProvider = {

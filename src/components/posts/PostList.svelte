@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { db } from '../../firebase';
+  import { db } from '../../firebase-shortcut';
 
   let posts;
 

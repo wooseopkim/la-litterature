@@ -1,6 +1,6 @@
 <script lang="ts">
   import firebase from 'firebase';
-  import { auth } from '../../firebase';
+  import { auth } from '../../firebase-shortcut';
 
   export let provider: {
     name: string,
