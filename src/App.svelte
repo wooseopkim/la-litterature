@@ -7,7 +7,8 @@
 	const query = db.collection('posts').get();
 	(async () => {
 		(await query).forEach((x) => {
-			posts = [...posts, x.data()];
+			const post = x.data();
+			posts = [...posts, { ...post, id: x.id }];
 		});
 	})();
 </script>
