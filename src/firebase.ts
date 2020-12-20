@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 firebase.initializeApp({
-	apiKey: 'AIzaSyBJX24_x0Lia44kHo6wpPFUXwLosXXJy9s',
+  apiKey: 'AIzaSyBJX24_x0Lia44kHo6wpPFUXwLosXXJy9s',
   authDomain: 'la-litterature.firebaseapp.com',
   projectId: 'la-litterature',
   storageBucket: 'la-litterature.appspot.com',

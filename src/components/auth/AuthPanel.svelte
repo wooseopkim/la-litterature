@@ -1,5 +1,5 @@
 <script lang="ts">
-	import firebase from 'firebase/app';
+  import firebase from 'firebase/app';
   import { auth } from '../../firebase';
   import AuthButton from './AuthButton.svelte';
 
@@ -10,10 +10,10 @@
     userName = x.displayName;
   })
 
-	const googleProvider = {
-		instance: new firebase.auth.GoogleAuthProvider(),
+  const googleProvider = {
+    instance: new firebase.auth.GoogleAuthProvider(),
     // TODO: i18n
-		name: '구글'
+    name: '구글'
   };
 </script>
 
