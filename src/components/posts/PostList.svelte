@@ -1,5 +1,6 @@
 <script lang="ts">
   import { db } from '../../firebase-shortcut';
+  import PostItem from './PostItem.svelte';
 
   let posts;
 
@@ -15,7 +16,7 @@
 
 {#if posts}
   {#each posts as post}
-    <pre>{JSON.stringify(post)}</pre>
+    <PostItem data={post} />
   {/each}
 {:else}
   <div>로딩...</div>
