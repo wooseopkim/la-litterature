@@ -57,6 +57,7 @@
   }
 
   h1 {
+    font-family: 'Noto Serif KR';
     color: white;
     filter: drop-shadow(0 0 0.3rem white);
   }
