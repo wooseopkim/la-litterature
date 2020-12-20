@@ -1,30 +1,18 @@
 <script lang="ts">
-	export let name: string;
+	import firebase from 'firebase/app';
+
+	let posts = [];
+
+	const query = firebase.firestore().collection('posts').get();
+	(async () => {
+		(await query).forEach((x) => {
+			posts = [...posts, x.data()];
+		});
+	})();
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	{#each posts as post}
+		<pre>{JSON.stringify(post)}</pre>
+	{/each}
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
