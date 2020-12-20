@@ -1,4 +1,5 @@
 <script lang="ts">
+  import firebase from 'firebase';
   import { auth } from '../../firebase';
 
   export let provider: {
@@ -7,6 +8,8 @@
   };
 
   async function onClick() {
+    // TODO: provide as an option if app should remember the user
+    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     auth.signInWithRedirect(provider.instance);
   }
 </script>
