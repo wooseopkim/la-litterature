@@ -13,7 +13,7 @@
   :global(body) {
     display: flex;
     justify-content: center;
-    background-image: url('https://pixabay.com/get/53e8d643435aaa14f6d1867dda2c34791439dfec4e5077497d2b73d59e4ac2_1920.jpg');
+    background-image: url('/background.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;

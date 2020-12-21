@@ -48,5 +48,7 @@
   .layout > :global(button) {
     width: 100%;
     max-width: initial;
+    display: flex;
+    justify-content: flex-end;
   }
 </style>
