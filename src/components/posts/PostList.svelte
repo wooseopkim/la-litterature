@@ -1,6 +1,7 @@
 <script lang="ts">
   import { SkeletonText } from 'carbon-components-svelte';
   import { db } from '../../firebase-shortcut';
+  import PostEditor from './PostEditor.svelte';
   import PostItem from './PostItem.svelte';
 
   const placeholderCount = 4;
@@ -19,6 +20,7 @@
 </script>
 
 <div>
+  <PostEditor />
   {#if posts}
     {#each posts as post}
       <PostItem data={post} />
