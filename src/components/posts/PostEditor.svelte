@@ -13,12 +13,6 @@
     editor = new EditorJS({
       holder: target,
       tools,
-      sanitizer: {
-        p: function() {
-          console.log(arguments);
-          return true;
-        }
-      },
       minHeight: 0
     });
   }
