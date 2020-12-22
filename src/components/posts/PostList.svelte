@@ -40,6 +40,21 @@
     width: 60em;
   }
 
+  @media screen and (max-width: 60em) {
+    div {
+      width: 100%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 40em) {
+    div {
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+  }
+
   div > :global(*) {
     margin-top: 2rem;
     margin-bottom: 2rem;

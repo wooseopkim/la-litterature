@@ -50,9 +50,30 @@
     justify-content: space-between;
   }
 
+  @media screen and (max-width: 60em) {
+    div {
+      width: 100%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 40em) {
+    div {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
   h1 {
     font-family: 'Noto Serif KR';
     color: white;
     filter: drop-shadow(0 0 0.3rem white);
+  }
+
+  @media screen and (max-width: 40em) {
+    h1 {
+      margin-bottom: 1rem;
+    }
   }
 </style>
