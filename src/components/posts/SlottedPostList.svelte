@@ -1,34 +1,38 @@
 <script lang="ts">
-  import { SkeletonText } from 'carbon-components-svelte';
   import { db } from '../../firebase-shortcut';
-  import PostEditor from './editor/PostEditor.svelte';
-  import PostItem from './item/PostItem.svelte';
+  import type PostResponse from '../../network/PostResponse';
 
   const placeholderCount = 4;
   const placeholderSize = 8;
 
   export let editable: boolean = false;
-  let posts;
+  let posts: PostResponse[];
 
   // TODO: add pagination logic
   const query = db.collection('posts').get();
   (async () => {
     (await query).forEach((x) => {
-      const post = x.data();
+      const post = x.data() as PostResponse;
       posts = [...(posts || []), { ...post, id: x.id }];
     });
   })();
 </script>
 
 <div>
-  {#if editable}<PostEditor />{/if}
+  {#if editable}
+    <slot name="editor">편집기</slot>
+  {/if}
   {#if posts}
     {#each posts as post}
-      <PostItem data={post} />
+      <slot name="item" item={post}>
+        게시물: {post.title}
+      </slot>
     {/each}
   {:else}
     {#each new Array(placeholderCount) as _}
-      <SkeletonText class="skeleton" paragraph lines={placeholderSize} />
+      <slot name="placeholder" size={placeholderSize}>
+        로딩
+      </slot>
     {/each}
   {/if}
 </div>

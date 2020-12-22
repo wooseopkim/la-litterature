@@ -1,4 +1,4 @@
-import PostList from './PostList.svelte';
+import SlottedPostList from './SlottedPostList.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
@@ -7,14 +7,14 @@ const { __loadData } = require('../../firebase-shortcut');
 
 describe('PostList', () => {
   it('should render loader', () => {
-    const { container } = render(PostList);
+    const { container } = render(SlottedPostList);
 
-    expect(container.textContent.trim()).toBe('');
+    expect(container).toHaveTextContent('로딩');
   });
 
   it('should render posts', async () => {
     const data = [{ title: '제목0' }, { title: '제목1' }, { title: '제목2' }];
-    const { container } = render(PostList);
+    const { container } = render(SlottedPostList);
 
     __loadData(data);
     for (const _ of data) {

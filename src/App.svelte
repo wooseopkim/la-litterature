@@ -1,11 +1,11 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css';
-  import PostList from './components/posts/PostList.svelte';
-  import AppToolbar from './components/toolbar/ComposedToolbar.svelte';
+  import PostList from './components/posts/ComposedPostList.svelte';
+  import Toolbar from './components/toolbar/ComposedToolbar.svelte';
 </script>
 
 <main>
-  <AppToolbar />
+  <Toolbar />
   <PostList editable={true} />
 </main>
 
