@@ -7,7 +7,7 @@
   const placeholderCount = 4;
   const placeholderSize = 8;
 
-  export const editable: boolean = false;
+  export let editable: boolean = false;
   let posts;
 
   // TODO: add pagination logic
