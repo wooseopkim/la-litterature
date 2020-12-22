@@ -8,7 +8,7 @@
     if (x) {
       userName = x.displayName;
     };
-  })
+  });
 </script>
 
 <section>
