@@ -36,7 +36,7 @@
 <style>
   div {
     padding-top: 1rem;
-    padding-bottom: 32rem;
+    padding-bottom: 50vh;
     width: 60em;
   }
 
