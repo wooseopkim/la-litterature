@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { Button } from 'carbon-components-svelte';
-  import firebase from 'firebase/app';
   import { auth } from '../../firebase-shortcut';
-  import AuthButton from '../auth/AuthButton.svelte';
 
   let loggedIn: 'loading' | 'yes' | 'no' = 'loading';
   let userName: string;
@@ -12,27 +9,24 @@
       userName = x.displayName;
     };
   })
-
-  const googleProvider = {
-    instance: new firebase.auth.GoogleAuthProvider(),
-    // TODO: i18n
-    name: '구글'
-  };
 </script>
 
 <section>
   <div>
     <h1>라 리테라튀르</h1>
 
-    {#if loggedIn === 'yes'}
-      <Button as let:props kind="secondary">
-        <span {...props}>{userName}</span>
-      </Button>
+    {#if loggedIn === 'loading'}
+      <slot name="loading">
+        <div>로딩</div>
+      </slot>
     {:else if loggedIn === 'no'}
-      <AuthButton provider={googleProvider} />
-    {:else}<!-- loggedIn === 'loading' -->
-      <!-- TODO: show as a circular progress -->
-      <Button skeleton />
+      <slot name="not-logged-in">
+        <div>로그인하기</div>
+      </slot>
+    {:else if loggedIn === 'yes'}
+      <slot name="logged-in" userName={userName}>
+        <div>사용자: {userName}</div>
+      </slot>
     {/if}
   </div>
 </section>
