@@ -7,10 +7,9 @@ const { __loadData } = require('../../firebase-shortcut');
 
 describe('PostList', () => {
   it('should render loader', () => {
-    const { queryByText } = render(PostList);
+    const { container } = render(PostList);
 
-    const result = queryByText('로딩...');
-    expect(result).toBeTruthy();
+    expect(container.textContent.trim()).toBe('');
   });
 
   it('should render posts', async () => {

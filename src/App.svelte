@@ -6,7 +6,7 @@
 
 <main>
   <Toolbar />
-  <PostList />
+  <PostList editable={true} />
 </main>
 
 <style>

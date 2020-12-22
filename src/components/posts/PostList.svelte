@@ -7,6 +7,7 @@
   const placeholderCount = 4;
   const placeholderSize = 8;
 
+  export const editable: boolean = false;
   let posts;
 
   // TODO: add pagination logic
@@ -20,7 +21,7 @@
 </script>
 
 <div>
-  <PostEditor />
+  {#if editable}<PostEditor />{/if}
   {#if posts}
     {#each posts as post}
       <PostItem data={post} />
