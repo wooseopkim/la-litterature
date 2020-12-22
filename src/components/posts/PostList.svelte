@@ -1,8 +1,8 @@
 <script lang="ts">
   import { SkeletonText } from 'carbon-components-svelte';
   import { db } from '../../firebase-shortcut';
-  import PostEditor from './PostEditor.svelte';
-  import PostItem from './PostItem.svelte';
+  import PostEditor from './editor/PostEditor.svelte';
+  import PostItem from './item/PostItem.svelte';
 
   const placeholderCount = 4;
   const placeholderSize = 8;
