@@ -1,7 +1,7 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css';
   import PostList from './components/posts/PostList.svelte';
-  import AppToolbar from './components/toolbar/AppToolbar.svelte';
+  import AppToolbar from './components/toolbar/ComposedToolbar.svelte';
 </script>
 
 <main>
