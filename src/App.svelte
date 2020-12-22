@@ -1,6 +1,6 @@
 <script lang="ts">
-  import 'carbon-components-svelte/css/white.css';
-  import PostList from './components/posts/PostList.svelte';  
+  import 'carbon-components-svelte/css/all.css';
+  import PostList from './components/posts/PostList.svelte';
   import AppToolbar from './components/toolbar/AppToolbar.svelte';
 </script>
 
@@ -32,5 +32,21 @@
   :global(body),
   main {
     height: initial;
+  }
+
+  :root {
+    --cds-interactive-01: #0f62fe !important;
+    --cds-interactive-02: #393939 !important;
+    --cds-interactive-03: #0f62fe !important;
+    --cds-interactive-04: #0f62fe !important;
+    --cds-focus: #0f62fe !important;
+    --cds-hover-primary: #0353e9 !important;
+    --cds-active-primary: #002d9c !important;
+    --cds-hover-primary-text: #0043ce !important;
+    --cds-hover-tertiary: #0353e9 !important;
+    --cds-active-tertiary: #002d9c !important;
+    --cds-brand-01: #0f62fe !important;
+    --cds-brand-02: #393939 !important;
+    --cds-brand-03: #0f62fe !important;
   }
 </style>
