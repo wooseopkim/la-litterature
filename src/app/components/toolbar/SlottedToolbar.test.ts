@@ -3,6 +3,7 @@ import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
 jest.mock('../../../usecases/auth/getAuthState');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { resolve, reject } = require('../../../usecases/auth/getAuthState');
 
 describe('SlottedToolbar', () => {

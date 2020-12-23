@@ -5,7 +5,7 @@
   const placeholderCount = 4;
   const placeholderSize = 8;
 
-  export let editable: boolean = false;
+  export let editable = false;
   const fetchPosts = readPosts(db);
 </script>
 
