@@ -11,8 +11,8 @@ export default {
   paragraph: {
     class: Paragraph,
     config: {
-      preserveBlank: true
-    }
+      preserveBlank: true,
+    },
   },
   header: Header,
   underline: Underline,
@@ -20,5 +20,5 @@ export default {
   quote: Quote,
   link: Link,
   embed: Embed,
-  image: SimpleImage
+  image: SimpleImage,
 };

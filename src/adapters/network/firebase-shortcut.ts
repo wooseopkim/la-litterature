@@ -9,7 +9,7 @@ firebase.initializeApp({
   storageBucket: 'la-litterature.appspot.com',
   messagingSenderId: '606442312543',
   appId: '1:606442312543:web:687663ad0c24af53b01cea',
-  measurementId: 'G-M8H7DEBMC7'
+  measurementId: 'G-M8H7DEBMC7',
 });
 
 export const auth = firebase.auth();

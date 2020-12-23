@@ -10,6 +10,6 @@ export default async function getAuthState(
         return;
       }
       resolve(user);
-    })
+    });
   });
 }

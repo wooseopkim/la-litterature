@@ -13,7 +13,7 @@
       deferredResolve = resolve;
       deferredReject = reject;
     });
-  }
+  };
 
   module.exports = mocked;
 })();

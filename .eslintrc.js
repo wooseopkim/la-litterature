@@ -20,9 +20,14 @@ module.exports = {
     {
       files: ['src/**/*.svelte'],
       processor: 'svelte3/svelte3',
-    }
+    },
   ],
 	settings: {
     'svelte3/preprocess': eslintSveltePreprocess(svelteConfig.preprocess)
-	},
+  },
+  rules: {
+    'semi': 'off',
+    '@typescript-eslint/semi': 'error',
+    'comma-dangle': ['error', 'always-multiline'],
+  },
 };

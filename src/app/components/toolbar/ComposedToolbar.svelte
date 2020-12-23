@@ -7,7 +7,7 @@
   const googleProvider = {
     instance: new firebase.auth.GoogleAuthProvider(),
     // TODO: i18n
-    name: '구글'
+    name: '구글',
   };
 </script>
 

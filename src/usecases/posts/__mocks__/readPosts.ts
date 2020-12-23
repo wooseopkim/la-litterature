@@ -10,7 +10,7 @@
     return new Promise((resolve) => {
       deferredResolve = resolve;
     });
-  }
+  };
 
   module.exports = mocked;
 })();

@@ -19,12 +19,12 @@ mocked.db = {
     return {
       get: () => {
         return new Promise((resolve) => resolveCollection = resolve);
-      }
+      },
     };
-  }
+  },
 };
 mocked.__loadData = (x: unknown[]) => {
   resolveCollection(x.map((y) => ({ data: () => y })));
-}
+};
 
 module.exports = mocked;

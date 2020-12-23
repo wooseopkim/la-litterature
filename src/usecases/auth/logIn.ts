@@ -7,6 +7,6 @@ export default async function logIn(
 ): Promise<void> {
   return Promise.all([
     auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL),
-    auth.signInWithRedirect(provider)
+    auth.signInWithRedirect(provider),
   ]).then();
 }

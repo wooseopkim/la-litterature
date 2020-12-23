@@ -13,7 +13,7 @@
     editor = new EditorJS({
       holder: target,
       tools,
-      minHeight: 0
+      minHeight: 0,
     });
   }
   $: if (title?.length > titleMaxLength) {
