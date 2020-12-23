@@ -1,7 +1,7 @@
 <script lang="ts">
   import firebase from 'firebase';
   import { Button } from 'carbon-components-svelte';
-  import { auth } from '../../firebase-shortcut';
+  import { auth } from '../../../adapters/network/firebase-shortcut';
 
   export let provider: {
     name: string,

@@ -2,8 +2,8 @@ import SlottedToolbar from './SlottedToolbar.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
-jest.mock('../../firebase-shortcut');
-const { __setAuthState } = require('../../firebase-shortcut');
+jest.mock('../../../adapters/network/firebase-shortcut');
+const { __setAuthState } = require('../../../adapters/network/firebase-shortcut');
 
 describe('SlottedToolbar', () => {
   it('should render loader', () => {

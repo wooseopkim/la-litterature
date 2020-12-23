@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { auth } from '../../firebase-shortcut';
+  import { auth } from '../../../adapters/network/firebase-shortcut';
 
   let loggedIn: 'loading' | 'yes' | 'no' = 'loading';
   let userName: string;

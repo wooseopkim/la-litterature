@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { db } from '../../firebase-shortcut';
-  import type PostResponse from '../../network/PostResponse';
+  import { db } from '../../../adapters/network/firebase-shortcut';
+  import type PostResponse from '../../../adapters/network/PostResponse';
 
   const placeholderCount = 4;
   const placeholderSize = 8;

@@ -2,8 +2,8 @@ import SlottedPostList from './SlottedPostList.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
-jest.mock('../../firebase-shortcut');
-const { __loadData } = require('../../firebase-shortcut');
+jest.mock('../../../adapters/network/firebase-shortcut');
+const { __loadData } = require('../../../adapters/network/firebase-shortcut');
 
 describe('PostList', () => {
   it('should render loader', () => {
