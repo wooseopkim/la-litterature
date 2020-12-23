@@ -1,40 +1,31 @@
 <script lang="ts">
   import { db } from '../../../adapters/network/firebase-shortcut';
-  import type PostResponse from '../../../adapters/network/PostResponse';
+  import readPosts from '../../../usecases/posts/readPosts';
 
   const placeholderCount = 4;
   const placeholderSize = 8;
 
   export let editable: boolean = false;
-  let posts: PostResponse[];
-
-  // TODO: add pagination logic
-  const query = db.collection('posts').get();
-  (async () => {
-    (await query).forEach((x) => {
-      const post = x.data() as PostResponse;
-      posts = [...(posts || []), { ...post, id: x.id }];
-    });
-  })();
+  const fetchPosts = readPosts(db);
 </script>
 
 <section>
   {#if editable}
     <slot name="editor">편집기</slot>
   {/if}
-  {#if posts}
-    {#each posts as post}
-      <slot name="item" item={post}>
-        게시물: {post.title}
-      </slot>
-    {/each}
-  {:else}
+  {#await fetchPosts}
     {#each new Array(placeholderCount) as _}
       <slot name="placeholder" size={placeholderSize}>
         로딩
       </slot>
     {/each}
-  {/if}
+  {:then posts}
+    {#each posts as post}
+      <slot name="item" item={post}>
+        게시물: {post.title}
+      </slot>
+    {/each}
+  {/await}
 </section>
 
 <style>

@@ -1,33 +1,27 @@
 <script lang="ts">
   import { auth } from '../../../adapters/network/firebase-shortcut';
+  import getAuthState from '../../../usecases/auth/getAuthState';
 
-  let loggedIn: 'loading' | 'yes' | 'no' = 'loading';
-  let userName: string;
-  auth.onAuthStateChanged((x) => {
-    loggedIn = Boolean(x) ? 'yes' : 'no';
-    if (x) {
-      userName = x.displayName;
-    };
-  });
+  const fetchAuthState = getAuthState(auth);
 </script>
 
 <section>
   <div class="content">
     <h1>라 리테라튀르</h1>
 
-    {#if loggedIn === 'loading'}
+    {#await fetchAuthState}
       <slot name="loading">
         <div>로딩</div>
       </slot>
-    {:else if loggedIn === 'no'}
+    {:then user}
+      <slot name="logged-in" userName={user.displayName}>
+        <div>사용자: {user.displayName}</div>
+      </slot>
+    {:catch}
       <slot name="not-logged-in">
         <div>로그인하기</div>
       </slot>
-    {:else if loggedIn === 'yes'}
-      <slot name="logged-in" userName={userName}>
-        <div>사용자: {userName}</div>
-      </slot>
-    {/if}
+    {/await}
   </div>
 </section>
 

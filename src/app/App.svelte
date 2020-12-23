@@ -1,8 +1,8 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css';
   import router from 'page';
-  import Feed from './ui/pages/Feed.svelte';
-  import NotFound from './ui/pages/NotFound.svelte';
+  import Feed from './pages/Feed.svelte';
+  import NotFound from './pages/NotFound.svelte';
 
   let page;
   router('/', '/feed');

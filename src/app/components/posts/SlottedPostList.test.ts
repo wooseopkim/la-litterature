@@ -2,8 +2,8 @@ import SlottedPostList from './SlottedPostList.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
-jest.mock('../../../adapters/network/firebase-shortcut');
-const { __loadData } = require('../../../adapters/network/firebase-shortcut');
+jest.mock('../../../usecases/posts/readPosts');
+const { resolve } = require('../../../usecases/posts/readPosts');
 
 describe('PostList', () => {
   it('should render loader', () => {
@@ -16,10 +16,8 @@ describe('PostList', () => {
     const data = [{ title: '제목0' }, { title: '제목1' }, { title: '제목2' }];
     const { container } = render(SlottedPostList);
 
-    __loadData(data);
-    for (const _ of data) {
-      await act();
-    }
+    resolve(data);
+    await act();
 
     for (const item of data) {
       expect(container).toHaveTextContent(item.title);

@@ -2,8 +2,8 @@ import SlottedToolbar from './SlottedToolbar.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
-jest.mock('../../../adapters/network/firebase-shortcut');
-const { __setAuthState } = require('../../../adapters/network/firebase-shortcut');
+jest.mock('../../../usecases/auth/getAuthState');
+const { resolve, reject } = require('../../../usecases/auth/getAuthState');
 
 describe('SlottedToolbar', () => {
   it('should render loader', () => {
@@ -16,16 +16,17 @@ describe('SlottedToolbar', () => {
     const displayName = '우섭';
     const { container } = render(SlottedToolbar);
 
-    __setAuthState({ displayName });
+    resolve({ displayName });
     await act();
 
+    console.log(container.innerHTML);
     expect(container).toHaveTextContent(`사용자: ${displayName}`);
   });
 
   it('should render button when not signed in', async () => {
     const { container } = render(SlottedToolbar);
 
-    __setAuthState(null);
+    reject();
     await act();
 
     expect(container).toHaveTextContent('로그인하기');
