@@ -1,5 +1,5 @@
 import type firebase from 'firebase/app';
-import type PostData from '../.../../adapters/network/PostData';
+import type PostData from '../../adapters/network/PostData';
 
 export default async function readPosts(
   db: firebase.firestore.Firestore
