@@ -1,0 +1,3 @@
+[submodule "eslint-plugin-svelte3"]
+	path = eslint-plugin-svelte3
+	url = https://github.com/NicoCevallos/eslint-plugin-svelte3
