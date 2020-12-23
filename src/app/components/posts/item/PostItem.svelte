@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let data;
+  import type PostData from "../../../../adapters/network/PostData";
+  
+  export let data: PostData;
 </script>
 
 <article>
