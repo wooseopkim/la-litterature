@@ -12,7 +12,7 @@
 </script>
 
 <section>
-  <div>
+  <div class="content">
     <h1>라 리테라튀르</h1>
 
     {#if loggedIn === 'loading'}
@@ -44,7 +44,11 @@
     justify-content: center;
   }
 
-  div {
+  h1 {
+    user-select: none;
+  }
+
+  .content {
     width: 60em;
     display: flex;
     justify-content: space-between;
