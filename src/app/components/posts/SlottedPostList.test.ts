@@ -3,7 +3,6 @@ import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
 jest.mock('../../../usecases/posts/readPosts');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { resolve } = require('../../../usecases/posts/readPosts');
 
 describe('PostList', () => {

@@ -21,6 +21,12 @@ module.exports = {
       files: ['src/**/*.svelte'],
       processor: 'svelte3/svelte3',
     },
+    {
+      files: ['*.config.js', '.*.js', '*.test.ts'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
   ],
 	settings: {
     'svelte3/preprocess': eslintSveltePreprocess(svelteConfig.preprocess)
