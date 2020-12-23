@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public",
+    "start": "sirv public --single",
     "validate": "svelte-check",
     "test": "jest"
   },
@@ -42,7 +42,9 @@
     "@editorjs/quote": "^2.4.0",
     "@editorjs/simple-image": "^1.4.0",
     "@editorjs/underline": "^1.0.0",
+    "@types/page": "^1.11.0",
     "firebase": "^8.2.1",
+    "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }
 }

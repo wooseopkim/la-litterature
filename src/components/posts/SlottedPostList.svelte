@@ -18,7 +18,7 @@
   })();
 </script>
 
-<div>
+<section>
   {#if editable}
     <slot name="editor">편집기</slot>
   {/if}
@@ -35,17 +35,17 @@
       </slot>
     {/each}
   {/if}
-</div>
+</section>
 
 <style>
-  div {
+  section {
     padding-top: 1rem;
     padding-bottom: 50vh;
     width: 60em;
   }
 
   @media screen and (max-width: 60em) {
-    div {
+    section {
       width: 100%;
       padding-left: 2rem;
       padding-right: 2rem;
@@ -53,18 +53,18 @@
   }
 
   @media screen and (max-width: 40em) {
-    div {
+    section {
       padding-left: 0rem;
       padding-right: 0rem;
     }
   }
 
-  div > :global(*) {
+  section > :global(*) {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 
-  div > :global(.skeleton) {
+  section > :global(.skeleton) {
     margin-top: 4rem;
     margin-bottom: 4rem;
   }

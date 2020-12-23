@@ -1,13 +1,19 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css';
-  import PostList from './components/posts/ComposedPostList.svelte';
-  import Toolbar from './components/toolbar/ComposedToolbar.svelte';
+  import router from 'page';
+  import Feed from './pages/Feed.svelte';
+  import NotFound from './pages/NotFound.svelte';
+
+  let page;
+  router('/', '/feed');
+  router('/feed', () => page = Feed);
+  router(() => page = NotFound);
+  router.start();
 </script>
 
-<main>
-  <Toolbar />
-  <PostList editable={true} />
-</main>
+<div class="layout">
+  <svelte:component this={page} />
+</div>
 
 <style>
   :global(body) {
@@ -20,18 +26,11 @@
     background-size: cover;
   }
 
-  main {
+  .layout {
     width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  :global(html),
-  :global(body),
-  main {
-    height: initial;
   }
 
   :root {
