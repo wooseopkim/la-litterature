@@ -19,7 +19,6 @@ describe('SlottedToolbar', () => {
     resolve({ displayName });
     await act();
 
-    console.log(container.innerHTML);
     expect(container).toHaveTextContent(`사용자: ${displayName}`);
   });
 
