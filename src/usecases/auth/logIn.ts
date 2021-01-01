@@ -1,12 +1,16 @@
-import firebase from 'firebase/app';
+import type firebase from 'firebase/app';
 
-// TODO: provide as an option if app should remember the user
-export default async function logIn(
-  auth: firebase.auth.Auth,
-  provider: firebase.auth.AuthProvider
-): Promise<void> {
+export default async function logIn({
+  auth,
+  provider,
+  persistence,
+}: {
+  auth: firebase.auth.Auth;
+  provider: firebase.auth.AuthProvider;
+  persistence: string;
+}): Promise<void> {
   return Promise.all([
-    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL),
+    auth.setPersistence(persistence),
     auth.signInWithRedirect(provider),
   ]).then();
 }

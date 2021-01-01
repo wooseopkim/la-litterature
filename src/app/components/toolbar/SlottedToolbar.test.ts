@@ -13,13 +13,13 @@ describe('SlottedToolbar', () => {
   });
 
   it('should render user when signed in', async () => {
-    const displayName = '우섭';
+    const name = '우섭';
     const { container } = render(SlottedToolbar);
 
-    resolve({ displayName });
+    resolve({ name });
     await act();
 
-    expect(container).toHaveTextContent(`사용자: ${displayName}`);
+    expect(container).toHaveTextContent(`사용자: ${name}`);
   });
 
   it('should render button when not signed in', async () => {

@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import type PostData from './PostData';
+import type UserData from './UserData';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyBJX24_x0Lia44kHo6wpPFUXwLosXXJy9s',
@@ -13,4 +15,22 @@ firebase.initializeApp({
 });
 
 export const auth = firebase.auth();
-export const db = firebase.firestore();
+
+const db = firebase.firestore();
+export const collections = {
+  users: db.collection('users').withConverter(createConverter<UserData>()),
+  posts: db.collection('posts').withConverter(createConverter<PostData>()),
+};
+
+function createConverter<T>(): firebase.firestore.FirestoreDataConverter<T> {
+  return {
+    toFirestore(model: T): firebase.firestore.DocumentData {
+      return { ...model };
+    },
+    fromFirestore(
+      snapshot: firebase.firestore.QueryDocumentSnapshot<firebase.firestore.DocumentData>
+    ): T {
+      return { ...snapshot.data() } as T;
+    },
+  };
+}

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { db } from '../../../adapters/network/firebase-shortcut';
+  import { collections } from '../../../adapters/network/firebase-shortcut';
   import readPosts from '../../../usecases/posts/readPosts';
 
   const placeholderCount = 4;
   const placeholderSize = 8;
 
   export let editable = false;
-  const fetchPosts = readPosts(db);
+  const fetchPosts = readPosts(collections.posts);
 </script>
 
 <section>

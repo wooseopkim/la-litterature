@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type firebase from 'firebase/app';
+  import firebase from 'firebase/app';
   import { Button } from 'carbon-components-svelte';
   import logIn from '../../../usecases/auth/logIn';
   import { auth } from '../../../adapters/network/firebase-shortcut';
@@ -10,7 +10,11 @@
   };
 
   async function onClick() {
-    await logIn(auth, provider.instance);
+    await logIn({
+      auth,
+      provider: provider.instance,
+      persistence: firebase.auth.Auth.Persistence.LOCAL,
+    });
   }
 </script>
 

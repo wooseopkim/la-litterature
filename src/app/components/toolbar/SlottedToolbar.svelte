@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { auth } from '../../../adapters/network/firebase-shortcut';
+  import { auth, collections } from '../../../adapters/network/firebase-shortcut';
   import getAuthState from '../../../usecases/auth/getAuthState';
 
-  const fetchAuthState = getAuthState(auth);
+  const fetchAuthState = getAuthState(auth, collections.users);
 </script>
 
 <section>
@@ -14,8 +14,8 @@
         <div>로딩</div>
       </slot>
     {:then user}
-      <slot name="logged-in" userName={user.displayName}>
-        <div>사용자: {user.displayName}</div>
+      <slot name="logged-in" userName={user.name}>
+        <div>사용자: {user.name}</div>
       </slot>
     {:catch}
       <slot name="not-logged-in">
