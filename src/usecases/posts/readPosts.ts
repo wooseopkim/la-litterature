@@ -5,7 +5,7 @@ export default async function readPosts(
   db: firebase.firestore.CollectionReference<PostData>,
 ): Promise<PostData[]> {
   // TODO: add pagination logic
-  const result = await db.get();
+  const result = await db.orderBy('created').get();
   const posts: PostData[] = [];
   result.forEach((x) => {
     const post = x.data() as PostData;
