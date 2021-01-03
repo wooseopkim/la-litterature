@@ -1,8 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import type PostData from './PostData';
-import type UserData from './UserData';
+import type Post from './posts/Post';
+import type User from './users/User';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyBJX24_x0Lia44kHo6wpPFUXwLosXXJy9s',
@@ -18,8 +18,8 @@ export const auth = firebase.auth();
 
 const db = firebase.firestore();
 export const collections = {
-  users: db.collection('users').withConverter(createConverter<UserData>()),
-  posts: db.collection('posts').withConverter(createConverter<PostData>()),
+  users: db.collection('users').withConverter(createConverter<User>()),
+  posts: db.collection('posts').withConverter(createConverter<Post>()),
 };
 
 function createConverter<T>(): firebase.firestore.FirestoreDataConverter<T> {

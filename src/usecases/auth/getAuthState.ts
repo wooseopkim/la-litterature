@@ -1,10 +1,10 @@
 import type firebase from 'firebase/app';
-import type UserData from '../../adapters/network/UserData';
+import type User from '../../adapters/network/users/User';
 
 export default async function getAuthState(
   auth: firebase.auth.Auth,
-  collection: firebase.firestore.CollectionReference<UserData>,
-): Promise<UserData> {
+  collection: firebase.firestore.CollectionReference<User>,
+): Promise<User> {
   return new Promise((resolve, reject) => {
     auth.onAuthStateChanged((auth) => {
       if (!auth) {
@@ -21,13 +21,13 @@ export default async function getAuthState(
         .catch((e) => reject(e));
     });
 
-    function onRead(record: firebase.firestore.QuerySnapshot<UserData>, auth: firebase.User) {
+    function onRead(record: firebase.firestore.QuerySnapshot<User>, auth: firebase.User) {
       if (!record.empty) {
-        resolve(record.docs[0].data() as UserData);
+        resolve(record.docs[0].data() as User);
         return;
       }
 
-      const user: UserData = {
+      const user: User = {
         providerId: auth.providerId,
         uid: auth.uid,
         name: auth.displayName,

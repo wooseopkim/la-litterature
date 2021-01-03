@@ -1,5 +1,5 @@
 import type firebase from 'firebase/app';
-import type UserData from '../../adapters/network/UserData';
+import type User from '../../adapters/network/users/User';
 import getAuthState from './getAuthState';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -13,9 +13,9 @@ const auth = {
 } as firebase.auth.Auth;
 
 let addResult: Promise<firebase.firestore.DocumentReference>;
-let readResult: Promise<firebase.firestore.QuerySnapshot<UserData>>;
+let readResult: Promise<firebase.firestore.QuerySnapshot<User>>;
 const collection = {
-  add(doc: UserData): Promise<firebase.firestore.DocumentReference> {
+  add(doc: User): Promise<firebase.firestore.DocumentReference> {
     return addResult;
   },
   where(
@@ -23,16 +23,16 @@ const collection = {
     op: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
-  ): firebase.firestore.Query<UserData> {
+  ): firebase.firestore.Query<User> {
     return collection;
   },
-  limit(limit: number): firebase.firestore.Query<UserData> {
+  limit(limit: number): firebase.firestore.Query<User> {
     return collection;
   },
-  get(): Promise<firebase.firestore.QuerySnapshot<UserData>> {
+  get(): Promise<firebase.firestore.QuerySnapshot<User>> {
     return readResult;
   },
-} as firebase.firestore.CollectionReference<UserData>;
+} as firebase.firestore.CollectionReference<User>;
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 describe('getAuthState', () => {
@@ -71,14 +71,14 @@ describe('getAuthState', () => {
       photoURL: '',
       providerId: 'test',
     } as firebase.User;
-    const appUser: UserData = {
+    const appUser: User = {
       uid: firebaseUser.uid,
       name: firebaseUser.displayName,
       profileUrl: firebaseUser.photoURL,
       providerId: firebaseUser.providerId,
     };
     readResult = Promise.resolve(
-      { empty: false, docs: [{ data: () => appUser }] } as firebase.firestore.QuerySnapshot<UserData>
+      { empty: false, docs: [{ data: () => appUser }] } as firebase.firestore.QuerySnapshot<User>
     );
 
     const result = getAuthState(auth, collection);
@@ -93,7 +93,7 @@ describe('getAuthState', () => {
       photoURL: '',
       providerId: 'test',
     } as firebase.User;
-    readResult = Promise.resolve({ empty: true } as firebase.firestore.QuerySnapshot<UserData>);
+    readResult = Promise.resolve({ empty: true } as firebase.firestore.QuerySnapshot<User>);
     addResult = Promise.reject();
 
     const result = getAuthState(auth, collection);
@@ -108,12 +108,12 @@ describe('getAuthState', () => {
       photoURL: '',
       providerId: 'test',
     } as firebase.User;
-    readResult = Promise.resolve({ empty: true } as firebase.firestore.QuerySnapshot<UserData>);
+    readResult = Promise.resolve({ empty: true } as firebase.firestore.QuerySnapshot<User>);
     addResult = Promise.resolve({} as firebase.firestore.DocumentReference);
 
     const result = getAuthState(auth, collection);
 
-    const appUser: UserData = {
+    const appUser: User = {
       uid: firebaseUser.uid,
       name: firebaseUser.displayName,
       profileUrl: firebaseUser.photoURL,

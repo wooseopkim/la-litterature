@@ -1,14 +1,14 @@
 import type firebase from 'firebase/app';
-import type PostData from '../../adapters/network/PostData';
+import type Post from '../../adapters/network/posts/Post';
 
 export default async function readPosts(
-  db: firebase.firestore.CollectionReference<PostData>,
-): Promise<PostData[]> {
+  db: firebase.firestore.CollectionReference<Post>,
+): Promise<Post[]> {
   // TODO: add pagination logic
   const result = await db.orderBy('created').get();
-  const posts: PostData[] = [];
+  const posts: Post[] = [];
   result.forEach((x) => {
-    const post = x.data() as PostData;
+    const post = x.data() as Post;
     posts.push({ ...post, id: x.id });
   });
   return posts;

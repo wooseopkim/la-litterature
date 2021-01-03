@@ -2,6 +2,9 @@
   import { Button, TextInput } from 'carbon-components-svelte';
   import EditorJS from '@editorjs/editorjs';
   import tools from './editorjs-tools';
+  import createPost from '../../../../usecases/posts/createPost';
+  import { collections } from '../../../../adapters/network/firebase-shortcut';
+  import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
 
   const titleMaxLength = 64;
   
@@ -22,7 +25,11 @@
 
   async function onSubmit() {
     const data = await editor.save();
-    console.log(title, data);
+    const draft = {
+      title,
+      content: data.blocks as Fragment[],
+    };
+    createPost(collections.posts, draft);
   }
 </script>
 
