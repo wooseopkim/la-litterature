@@ -20,7 +20,21 @@
   {:else if isEmbedFragment(data)}
     <AspectRatio ratio="2x1"><embed src={data.data.embed} /></AspectRatio>
   {:else if isHeaderFragment(data)}
-    <h2>{data.data.text}</h2>
+    {#if data.data.level === 1}
+      <h1>{data.data.text}</h1>
+    {:else if data.data.level === 2}
+      <h2>{data.data.text}</h2>
+    {:else if data.data.level === 3}
+      <h3>{data.data.text}</h3>
+    {:else if data.data.level === 4}
+      <h4>{data.data.text}</h4>
+    {:else if data.data.level === 5}
+      <h5>{data.data.text}</h5>
+    {:else if data.data.level === 6}
+      <h6>{data.data.text}</h6>
+    {:else}
+      <h2>{data.data.text}</h2>
+    {/if}
   {:else if isImageFragment(data)}
     <img src={data.data.url} alt={data.data.caption} />
   {:else if isQuoteFragment(data)}
