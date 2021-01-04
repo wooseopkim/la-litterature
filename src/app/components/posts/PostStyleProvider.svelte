@@ -12,6 +12,21 @@
     padding: 0;
   }
 
+  .provider :global(h1),
+  .provider :global(h2),
+  .provider :global(h3),
+  .provider :global(h4),
+  .provider :global(h5),
+  .provider :global(h6) {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .provider :global(.captioned) {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
   .provider :global(b) {
     font-weight: bold;
   }

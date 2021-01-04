@@ -7,19 +7,33 @@
 
 <article>
   <h1>{data.title}</h1>
-  {#each data.content as fragment}
-    <Fragment data={fragment} />
-  {/each}
+  <main>
+    {#each data.content as fragment}
+      <Fragment data={fragment} />
+    {/each}
+  </main>
 </article>
 
 <style>
   article {
-    padding: 2rem;
     border: 1px solid lightgrey;
     background-color: white;
   }
 
+  h1,
+  main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   h1 {
-    margin-bottom: 1rem;
+    border-bottom: 1px solid;
+    padding-top: 2rem;
+    padding-bottom: 1.2rem;
+  }
+
+  main {
+    padding-top: 1.4rem;
+    padding-bottom: 2rem;
   }
 </style>
