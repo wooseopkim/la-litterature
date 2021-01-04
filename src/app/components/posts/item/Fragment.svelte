@@ -45,6 +45,7 @@
         <h2>{data.data.text}</h2>
       {/if}
     {:else if isImageFragment(data)}
+      <!-- TODO render other props -->
       <Captioned caption={data.data.caption}>
         <img src={data.data.url} alt={data.data.caption} />
       </Captioned>
