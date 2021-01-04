@@ -68,6 +68,6 @@
   }
 
   .editor :global(.ce-header) {
-    padding: 0;
+    padding-top: 0;
   }
 </style>
