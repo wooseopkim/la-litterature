@@ -7,7 +7,8 @@
   import { isImageFragment } from '../../../../adapters/network/posts/fragments/ImageFragment';
   import { isQuoteFragment } from '../../../../adapters/network/posts/fragments/QuoteFragment';
   import { isTextFragment } from '../../../../adapters/network/posts/fragments/TextFragment';
-import PostStyleProvider from '../PostStyleProvider.svelte';
+  import PostStyleProvider from '../PostStyleProvider.svelte';
+  import Captioned from './Captioned.svelte';
 
   export let data: Fragment;
 </script>
@@ -20,7 +21,9 @@ import PostStyleProvider from '../PostStyleProvider.svelte';
     {:else if isDelimiterFragment(data)}
       <hr />
     {:else if isEmbedFragment(data)}
-      <AspectRatio ratio="2x1"><embed src={data.data.embed} /></AspectRatio>
+      <Captioned caption={data.data.caption}>
+        <AspectRatio ratio="2x1"><embed src={data.data.embed} /></AspectRatio>
+      </Captioned>
     {:else if isHeaderFragment(data)}
       {#if data.data.level === 1}
         <h1>{data.data.text}</h1>
@@ -38,9 +41,13 @@ import PostStyleProvider from '../PostStyleProvider.svelte';
         <h2>{data.data.text}</h2>
       {/if}
     {:else if isImageFragment(data)}
-      <img src={data.data.url} alt={data.data.caption} />
+      <Captioned caption={data.data.caption}>
+        <img src={data.data.url} alt={data.data.caption} />
+      </Captioned>
     {:else if isQuoteFragment(data)}
-      <blockquote>{data.data.text}</blockquote>
+      <Captioned caption={data.data.caption}>
+        <blockquote>{data.data.text}</blockquote>
+      </Captioned>
     {:else}
       <!-- TODO Handle error -->
       <p>?</p>
