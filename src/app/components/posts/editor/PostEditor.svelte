@@ -53,7 +53,7 @@
 
   .editor :global(.codex-editor__redactor) {
     padding-top: 1rem;
-    padding-bottom: 1rem !important;
+    padding-bottom: 2rem !important;
   }
 
   .editor :global(.ce-inline-toolbar) {
