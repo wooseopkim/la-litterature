@@ -16,8 +16,12 @@
 <PostStyleProvider>
   <div class="fragment">
     {#if isTextFragment(data)}
-      <!-- TODO Sanitize -->
-      <p>{@html data.data.text}</p>
+      {#if data.data.text.length > 0}
+        <!-- TODO Sanitize -->
+        <p>{@html data.data.text}</p>
+      {:else}
+        <p><br></p>
+      {/if}
     {:else if isDelimiterFragment(data)}
       <hr />
     {:else if isEmbedFragment(data)}
