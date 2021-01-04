@@ -5,6 +5,7 @@
   import createPost from '../../../../usecases/posts/createPost';
   import { collections } from '../../../../adapters/network/firebase-shortcut';
   import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
+  import PostStyleProvider from '../PostStyleProvider.svelte';
 
   const titleMaxLength = 64;
   
@@ -35,7 +36,9 @@
 
 <div class="editor">
   <TextInput light hideLabel bind:value={title} />
-  <div class="editor" bind:this={target} />
+  <PostStyleProvider>
+    <div class="editor" bind:this={target} />
+  </PostStyleProvider>
   <Button kind="secondary" on:click={onSubmit}>투고</Button>
 </div>
 
