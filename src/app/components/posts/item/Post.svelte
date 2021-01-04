@@ -1,12 +1,15 @@
 <script lang="ts">
-  import type PostData from "../../../../adapters/network/PostData";
+  import type PostData from '../../../../adapters/network/posts/Post';
+  import Fragment from './Fragment.svelte';
   
   export let data: PostData;
 </script>
 
 <article>
   <h1>{data.title}</h1>
-  <p>{data.content}</p>
+  {#each data.content as fragment}
+    <Fragment data={fragment} />
+  {/each}
 </article>
 
 <style>

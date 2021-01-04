@@ -1,7 +1,7 @@
 <script lang="ts">
   import { SkeletonText } from 'carbon-components-svelte';
   import PostEditor from './editor/PostEditor.svelte';
-  import PostItem from './item/PostItem.svelte';
+  import Post from './item/Post.svelte';
   import SlottedPostList from './SlottedPostList.svelte';
 
   export let editable = false;
@@ -12,7 +12,7 @@
     <PostEditor />
   </div>
   <div slot="item">
-    <PostItem data={item} />
+    <Post data={item} />
   </div>
   <div slot="placeholder">
     <SkeletonText paragraph lines={placeholderSize} />
