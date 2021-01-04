@@ -42,6 +42,7 @@ import PostStyleProvider from '../PostStyleProvider.svelte';
     {:else if isQuoteFragment(data)}
       <blockquote>{data.data.text}</blockquote>
     {:else}
+      <!-- TODO Handle error -->
       <p>?</p>
     {/if}
   </div>
