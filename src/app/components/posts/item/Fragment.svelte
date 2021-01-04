@@ -1,5 +1,6 @@
 <script lang="ts">
   import { AspectRatio } from 'carbon-components-svelte';
+  import { sanitize } from 'dompurify';
   import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
   import { isDelimiterFragment } from '../../../../adapters/network/posts/fragments/DelimiterFragment';
   import { isEmbedFragment } from '../../../../adapters/network/posts/fragments/EmbedFragment';
@@ -17,8 +18,7 @@
   <div class="fragment">
     {#if isTextFragment(data)}
       {#if data.data.text.length > 0}
-        <!-- TODO Sanitize -->
-        <p>{@html data.data.text}</p>
+        <p>{@html sanitize(data.data.text)}</p>
       {:else}
         <p><br></p>
       {/if}

@@ -49,6 +49,7 @@
     "@editorjs/simple-image": "^1.4.0",
     "@editorjs/underline": "^1.0.0",
     "@types/page": "^1.11.0",
+    "dompurify": "^2.2.6",
     "firebase": "^8.2.1",
     "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
