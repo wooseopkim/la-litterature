@@ -33,18 +33,18 @@
   }
 </script>
 
-<div class="layout">
+<div class="editor">
   <TextInput light hideLabel bind:value={title} />
   <div class="editor" bind:this={target} />
   <Button kind="secondary" on:click={onSubmit}>투고</Button>
 </div>
 
 <style>
-  .layout {
+  .editor {
     background-color: white;
   }
 
-  .layout :global(input) {
+  .editor :global(input) {
     padding-top: 1rem;
     padding-bottom: 1rem;
     height: 3rem;
@@ -60,7 +60,7 @@
     border-radius: 0px;
   }
 
-  .layout > :global(button) {
+  .editor > :global(button) {
     width: 100%;
     max-width: initial;
     display: flex;

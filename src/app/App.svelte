@@ -11,7 +11,7 @@
   router.start();
 </script>
 
-<div class="layout">
+<div class="app">
   <svelte:component this={page} />
 </div>
 
@@ -26,7 +26,7 @@
     background-size: cover;
   }
 
-  .layout {
+  .app {
     width: 100%;
     height: 100%;
     display: flex;
