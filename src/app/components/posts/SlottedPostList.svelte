@@ -25,6 +25,8 @@
         게시물: {post.title}
       </slot>
     {/each}
+  {:catch}
+    <!-- TODO handle error -->
   {/await}
 </section>
 
