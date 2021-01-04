@@ -55,8 +55,3 @@
   </div>
 </PostStyleProvider>
 
-<style>
-  .fragment {
-    margin-bottom: 1rem;
-  }
-</style>

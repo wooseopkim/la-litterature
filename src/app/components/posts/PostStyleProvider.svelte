@@ -3,6 +3,15 @@
 </div>
 
 <style>
+  .provider > :global(.fragment),
+  .provider :global(.ce-block) {
+    margin-bottom: 0.4rem;
+  }
+
+  .provider :global(.cdx-block) {
+    padding: 0;
+  }
+
   .provider :global(b) {
     font-weight: bold;
   }
