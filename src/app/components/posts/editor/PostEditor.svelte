@@ -66,4 +66,8 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .editor :global(.ce-header) {
+    padding: 0;
+  }
 </style>
