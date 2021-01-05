@@ -5,5 +5,5 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  moduleFileExtensions: ['js', 'ts', 'svelte']
+  moduleFileExtensions: ['js', 'ts', 'svelte'],
 };
