@@ -1,10 +1,10 @@
 (() => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mocked = jest.createMockFromModule('./readPosts') as any;
+  const mocked = jest.createMockFromModule('../readPosts') as any;
 
-  let deferredResolve;
+  let deferredResolve: (x: any) => void;
 
-  mocked.resolve = (x) => deferredResolve(x);
+  mocked.resolve = (x: any) => deferredResolve(x);
 
   mocked.default = async () => {
     return new Promise((resolve) => {

@@ -1,20 +1,20 @@
 <script lang="ts">
   import { SkeletonText } from 'carbon-components-svelte';
-  import PostEditor from './editor/PostEditor.svelte';
+  import ComposedPostEditor from './editor/ComposedPostEditor.svelte';
   import Post from './item/Post.svelte';
   import SlottedPostList from './SlottedPostList.svelte';
 
   export let editable = false;
 </script>
 
-<SlottedPostList editable={editable} let:item={item} let:placeholderSize={placeholderSize}>
+<SlottedPostList editable={editable}>
   <div slot="editor">
-    <PostEditor />
+    <ComposedPostEditor />
   </div>
-  <div slot="item">
+  <div slot="item" let:item>
     <Post data={item} />
   </div>
-  <div slot="placeholder">
-    <SkeletonText paragraph lines={placeholderSize} />
+  <div slot="placeholder" let:size>
+    <SkeletonText paragraph lines={size} />
   </div>
 </SlottedPostList>

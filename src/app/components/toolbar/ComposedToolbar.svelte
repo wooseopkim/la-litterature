@@ -11,14 +11,14 @@
   };
 </script>
 
-<Toolbar let:userName={userName}>
+<Toolbar>
   <div slot="loading">
     <Button skeleton />
   </div>
   <div slot="not-logged-in">
     <AuthButton provider={googleProvider} />
   </div>
-  <div slot="logged-in">
+  <div slot="logged-in" let:userName>
     <Button>{userName}</Button>
   </div>
 </Toolbar>

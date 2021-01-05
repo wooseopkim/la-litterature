@@ -1,15 +1,15 @@
 (() => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mocked = jest.createMockFromModule('../getAuthState') as any;
+  const mocked = jest.createMockFromModule('../createPost') as any;
 
-  let deferredResolve: (x: any) => void;
+  let deferredResolve: () => void;
   let deferredReject: () => void;
 
-  mocked.resolve = (x: any) => deferredResolve(x);
+  mocked.resolve = () => deferredResolve();
   mocked.reject = () => deferredReject();
 
   mocked.default = async () => {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       deferredResolve = resolve;
       deferredReject = reject;
     });

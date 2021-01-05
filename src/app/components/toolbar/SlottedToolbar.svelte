@@ -2,14 +2,14 @@
   import { auth, collections } from '../../../adapters/network/firebase-shortcut';
   import getAuthState from '../../../usecases/auth/getAuthState';
 
-  const fetchAuthState = getAuthState(auth, collections.users);
+  const getAuthStateResult = getAuthState(auth, collections.users);
 </script>
 
 <section>
   <div class="content">
     <h1>라 리테라튀르</h1>
 
-    {#await fetchAuthState}
+    {#await getAuthStateResult}
       <slot name="loading">
         <div>로딩</div>
       </slot>

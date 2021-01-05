@@ -6,14 +6,14 @@
   const placeholderSize = 8;
 
   export let editable = false;
-  const fetchPosts = readPosts(collections.posts);
+  const readPostsResult = readPosts(collections.posts);
 </script>
 
 <section>
   {#if editable}
     <slot name="editor">편집기</slot>
   {/if}
-  {#await fetchPosts}
+  {#await readPostsResult}
     {#each new Array(placeholderCount) as _}
       <slot name="placeholder" size={placeholderSize}>
         로딩
