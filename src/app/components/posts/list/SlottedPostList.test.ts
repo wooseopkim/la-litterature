@@ -2,8 +2,8 @@ import SlottedPostList from './SlottedPostList.test.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
-jest.mock('../../../usecases/posts/readPosts');
-const { resolve } = require('../../../usecases/posts/readPosts');
+jest.mock('../../../../usecases/posts/readPosts');
+const { resolve } = require('../../../../usecases/posts/readPosts');
 
 const defaultProps = {
   editable: false,

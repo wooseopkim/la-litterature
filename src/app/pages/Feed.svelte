@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ComposedPostList from '../components/posts/ComposedPostList.svelte';
+  import ComposedPostList from '../components/posts/list/ComposedPostList.svelte';
   import ComposedToolbar from '../components/toolbar/ComposedToolbar.svelte';
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { collections } from '../../../adapters/network/firebase-shortcut';
-  import readPosts from '../../../usecases/posts/readPosts';
+  import { collections } from '../../../../adapters/network/firebase-shortcut';
+  import readPosts from '../../../../usecases/posts/readPosts';
 
   const placeholderCount = 4;
   const placeholderSize = 8;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { SkeletonText } from 'carbon-components-svelte';
-  import ComposedPostEditor from './editor/ComposedPostEditor.svelte';
-  import Post from './item/Post.svelte';
+  import ComposedPostEditor from '../editor/ComposedPostEditor.svelte';
+  import Post from '../item/Post.svelte';
   import SlottedPostList from './SlottedPostList.svelte';
 
   export let editable = false;
