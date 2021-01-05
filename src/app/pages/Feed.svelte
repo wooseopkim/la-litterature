@@ -8,7 +8,7 @@
     <ComposedToolbar />
   </header>
   <main>
-    <ComposedPostList />
+    <ComposedPostList editable={true} />
   </main>
 </div>
 
