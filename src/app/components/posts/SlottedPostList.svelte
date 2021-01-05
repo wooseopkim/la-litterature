@@ -15,15 +15,11 @@
   {/if}
   {#await readPostsResult}
     {#each new Array(placeholderCount) as _}
-      <slot name="placeholder" size={placeholderSize}>
-        로딩
-      </slot>
+      <slot name="placeholder" size={placeholderSize} />
     {/each}
   {:then posts}
     {#each posts as post}
-      <slot name="item" item={post}>
-        게시물: {post.title}
-      </slot>
+      <slot name="item" item={post} />
     {/each}
   {:catch}
     <!-- TODO handle error -->

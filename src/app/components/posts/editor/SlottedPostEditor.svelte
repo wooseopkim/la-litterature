@@ -36,15 +36,11 @@
   </PostStyleProvider>
   <div class="button">
     {#await createPostResult}
-      <slot name="loader">로딩</slot>
+      <slot name="loader" />
     {:then}
-      <slot name="button" submit={submit} text="투고">
-        <button on:click={() => submit('', [], () => {})}>제출</button>
-      </slot>
+      <slot name="button" submit={submit} text="투고" />
     {:catch}
-      <slot name="button" submit={submit} text="재시도">
-        <button on:click={() => submit('', [], () => {})}>다시</button>
-      </slot>
+      <slot name="button" submit={submit} text="재시도" />
     {/await}
   </div>
 </div>

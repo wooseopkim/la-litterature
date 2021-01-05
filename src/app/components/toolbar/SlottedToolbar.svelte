@@ -10,17 +10,11 @@
     <h1>라 리테라튀르</h1>
 
     {#await getAuthStateResult}
-      <slot name="loading">
-        <div>로딩</div>
-      </slot>
+      <slot name="loading" />
     {:then user}
-      <slot name="logged-in" userName={user.name}>
-        <div>사용자: {user.name}</div>
-      </slot>
+      <slot name="logged-in" userName={user.name} />
     {:catch}
-      <slot name="not-logged-in">
-        <div>로그인하기</div>
-      </slot>
+      <slot name="not-logged-in" />
     {/await}
   </div>
 </section>

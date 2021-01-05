@@ -1,4 +1,4 @@
-import SlottedToolbar from './SlottedToolbar.svelte';
+import SlottedToolbar from './SlottedToolbar.test.svelte';
 import { render, act } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
@@ -7,27 +7,27 @@ const { resolve, reject } = require('../../../usecases/auth/getAuthState');
 
 describe('SlottedToolbar', () => {
   it('should render loader', () => {
-    const { container } = render(SlottedToolbar);
+    const { getByText } = render(SlottedToolbar);
 
-    expect(container).toHaveTextContent('로딩');
+    expect(getByText('로딩')).toBeInTheDocument();
   });
 
   it('should render user when signed in', async () => {
     const name = '우섭';
-    const { container } = render(SlottedToolbar);
+    const { getByText } = render(SlottedToolbar);
 
     resolve({ name });
     await act();
 
-    expect(container).toHaveTextContent(`사용자: ${name}`);
+    expect(getByText(name)).toBeInTheDocument();
   });
 
   it('should render button when not signed in', async () => {
-    const { container } = render(SlottedToolbar);
+    const { getByText } = render(SlottedToolbar);
 
     reject();
     await act();
 
-    expect(container).toHaveTextContent('로그인하기');
+    expect(getByText('로그인')).toBeInTheDocument();
   });
 });

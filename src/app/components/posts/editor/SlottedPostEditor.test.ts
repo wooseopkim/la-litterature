@@ -1,4 +1,4 @@
-import SlottedPostEditor from './SlottedPostEditor.svelte';
+import SlottedPostEditor from './SlottedPostEditor.test.svelte';
 import { act, render, waitFor } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
@@ -12,7 +12,7 @@ describe('SlottedPostEditor', () => {
     
     await act();
 
-    expect(queryByRole('button')).toHaveTextContent('제출');
+    expect(queryByRole('button')).toHaveTextContent('투고');
   });
 
   it('should render loader on submit', async () => {
@@ -31,7 +31,7 @@ describe('SlottedPostEditor', () => {
     userEvent.click(queryByRole('button'));
     resolve();
 
-    await waitFor(() => expect(queryByRole('button')).toHaveTextContent('제출'));
+    await waitFor(() => expect(queryByRole('button')).toHaveTextContent('투고'));
   });
 
   it('should render button on error', async () => {
@@ -41,6 +41,6 @@ describe('SlottedPostEditor', () => {
     userEvent.click(queryByRole('button'));
     reject();
 
-    await waitFor(() => expect(queryByRole('button')).toHaveTextContent('다시'));
+    await waitFor(() => expect(queryByRole('button')).toHaveTextContent('재시도'));
   });
 });
