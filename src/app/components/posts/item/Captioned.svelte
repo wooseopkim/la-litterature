@@ -10,9 +10,6 @@
 </div>
 
 <style>
-  .captioned {
-  }
-
   .caption {
     margin-top: 0.4rem;
     opacity: 0.5;
