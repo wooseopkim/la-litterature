@@ -2,7 +2,7 @@
   import { Button } from 'carbon-components-svelte';
   import firebase from 'firebase/app';
   import AuthButton from '../auth/AuthButton.svelte';
-  import Toolbar from './SlottedToolbar.svelte';
+  import SlottedToolbar from './SlottedToolbar.svelte';
 
   const googleProvider = {
     instance: new firebase.auth.GoogleAuthProvider(),
@@ -11,7 +11,7 @@
   };
 </script>
 
-<Toolbar>
+<SlottedToolbar>
   <div slot="loading">
     <Button skeleton />
   </div>
@@ -21,4 +21,4 @@
   <div slot="logged-in" let:userName>
     <Button>{userName}</Button>
   </div>
-</Toolbar>
+</SlottedToolbar>
