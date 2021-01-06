@@ -1,5 +1,5 @@
 import SlottedToolbar from './SlottedToolbar.test.svelte';
-import { render, act } from '@testing-library/svelte';
+import { render, act, waitFor } from '@testing-library/svelte';
 import '@testing-library/jest-dom';
 
 jest.mock('../../../usecases/auth/getAuthState');
@@ -19,7 +19,7 @@ describe('SlottedToolbar', () => {
     resolve({ name });
     await act();
 
-    expect(getByText(name)).toBeInTheDocument();
+    await waitFor(() => expect(getByText(name)).toBeInTheDocument());
   });
 
   it('should render button when not signed in', async () => {
@@ -28,6 +28,6 @@ describe('SlottedToolbar', () => {
     reject();
     await act();
 
-    expect(getByText('로그인')).toBeInTheDocument();
+    await waitFor(() => expect(getByText('로그인')).toBeInTheDocument());
   });
 });
