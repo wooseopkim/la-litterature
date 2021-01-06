@@ -10,6 +10,7 @@
     "lint": "eslint src --ext .svelte,.ts"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^1.1.6",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
