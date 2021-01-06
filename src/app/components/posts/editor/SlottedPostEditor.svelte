@@ -3,15 +3,20 @@
   import { collections } from '../../../../adapters/network/firebase-shortcut';
   import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
   import PostStyleProvider from '../PostStyleProvider.svelte';
+  import { authenticatedUser } from '../../../../adapters/data/store';
+  import type User from '../../../../adapters/network/users/User';
 
   let createPostResult = Promise.resolve();
   let submitting = false;
+  let user: User;
+
+  authenticatedUser.subscribe((x) => user = x);
 
   async function submit(title: string, content: Fragment[], clear: () => void) {
     if (submitting) {
       return;
     }
-    createPostResult = createPost(collections.posts, { title, content })
+    createPostResult = createPost(collections.posts, collections.users, user, { title, content })
       .then(() => {
         submitting = false;
         clear();

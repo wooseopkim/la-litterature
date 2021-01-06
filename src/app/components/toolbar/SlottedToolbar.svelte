@@ -1,8 +1,13 @@
 <script lang="ts">
+  import { authenticatedUser } from '../../../adapters/data/store';
   import { auth, collections } from '../../../adapters/network/firebase-shortcut';
   import getAuthState from '../../../usecases/auth/getAuthState';
 
-  const getAuthStateResult = getAuthState(auth, collections.users);
+  const getAuthStateResult = getAuthState(auth, collections.users)
+    .then((x) => {
+      authenticatedUser.set(x);
+      return x;
+    });
 </script>
 
 <section>
