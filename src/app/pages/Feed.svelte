@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { authenticated } from '../../adapters/data/store';
   import ComposedPostList from '../components/posts/list/ComposedPostList.svelte';
   import ComposedToolbar from '../components/toolbar/ComposedToolbar.svelte';
 </script>
@@ -8,7 +9,7 @@
     <ComposedToolbar />
   </header>
   <main>
-    <ComposedPostList editable={true} />
+    <ComposedPostList editable={$authenticated} />
   </main>
 </div>
 
