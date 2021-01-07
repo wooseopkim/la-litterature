@@ -16,7 +16,7 @@
     if (submitting) {
       return;
     }
-    createPostResult = createPost(collections.posts, collections.users, user, { title, content })
+    createPostResult = createPost(collections.posts, user, { title, content })
       .then(() => {
         submitting = false;
         clear();

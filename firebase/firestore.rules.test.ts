@@ -36,7 +36,7 @@ describe('firestore rules', () => {
   
       const db = app.firestore().collection('posts');
   
-      await firebase.assertFails(db.add({ author: { uid: '2' }, title: '_' }));
+      await firebase.assertFails(db.add({ authorUid: '2', title: '_' }));
     });
   
     it('should pass post creation if authenticated as the author', async () => {
@@ -44,7 +44,7 @@ describe('firestore rules', () => {
   
       const db = app.firestore().collection('posts');
   
-      await firebase.assertSucceeds(db.add({ author: { uid: '3' }, title: '_' }));
+      await firebase.assertSucceeds(db.add({ authorUid: '3', title: '_' }));
     });
 
     it('should pass post creation if title is not too long', async () => {
@@ -52,7 +52,7 @@ describe('firestore rules', () => {
 
       const db = app.firestore().collection('posts');
 
-      await firebase.assertSucceeds(db.add({ author: { uid: '1' }, title: '_'.repeat(32) }));
+      await firebase.assertSucceeds(db.add({ authorUid: '1', title: '_'.repeat(32) }));
     });
 
     it('should reject post creation if title is too long', async () => {
@@ -60,7 +60,7 @@ describe('firestore rules', () => {
 
       const db = app.firestore().collection('posts');
 
-      await firebase.assertFails(db.add({ author: { uid: '1' }, title: '_'.repeat(32 + 1) }));
+      await firebase.assertFails(db.add({ authorUid: '1', title: '_'.repeat(32 + 1) }));
     });
   });
 
