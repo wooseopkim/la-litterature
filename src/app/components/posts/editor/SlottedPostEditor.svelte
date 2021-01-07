@@ -1,5 +1,10 @@
 <script lang="ts">
-  import createPost from '../../../../usecases/posts/createPost';
+  import createPost, {
+    contentEmptyError,
+    titleEmptyError,
+    titleMaxLength,
+    titleTooLongError,
+  } from '../../../../usecases/posts/createPost';
   import { collections } from '../../../../adapters/network/firebase-shortcut';
   import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
   import PostStyleProvider from '../PostStyleProvider.svelte';
@@ -16,6 +21,7 @@
     if (submitting) {
       return;
     }
+    submitting = true;
     createPostResult = createPost(collections.posts, user, { title, content })
       .then(() => {
         submitting = false;
@@ -26,27 +32,47 @@
         throw e;
       });
   }
+
+  function getErrorMessage(e: Error): string {
+    if (!e) {
+      return null;
+    }
+    switch (e) {
+      case titleEmptyError:
+        return '제목을 입력해주세요.';
+      case contentEmptyError:
+        return '내용을 입력해주세요.';
+      case titleTooLongError:
+        return '제목이 최대 길이를 초과합니다.';
+    }
+    return '오류가 발생했습니다.';
+  }
 </script>
 
 <div class="editor">
   <div class="title">
-    <slot name="title">
-      <input />
-    </slot>
+    <slot name="title" maxLength={titleMaxLength} />
   </div>
   <PostStyleProvider>
-    <slot name="content">
-      <textarea />
-    </slot>
+    <slot name="content" />
   </PostStyleProvider>
-  <div class="button">
+  <div class="footer">
     {#await createPostResult}
-      <slot name="loader" />
-    {:then}
-      <slot name="button" submit={submit} text="투고" />
-    {:catch}
-      <slot name="button" submit={submit} text="재시도" />
+      <!-- intended empty block -->
+    {:catch e}
+      <span class="error">
+        <slot name="error" error={getErrorMessage(e)} />
+      </span>
     {/await}
+    <span class="button">
+      {#await createPostResult}
+        <slot name="loader" />
+      {:then}
+        <slot name="button" submit={submit} text="투고" />
+      {:catch}
+        <slot name="button" submit={submit} text="재시도" />
+      {/await}
+    </span>
   </div>
 </div>
 
@@ -67,5 +93,13 @@
     max-width: initial;
     display: flex;
     justify-content: flex-end;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .footer > :first-child {
+    flex-grow: 1;
   }
 </style>

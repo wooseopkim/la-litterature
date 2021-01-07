@@ -3,10 +3,10 @@
   const mocked = jest.createMockFromModule('../createPost') as any;
 
   let deferredResolve: () => void;
-  let deferredReject: () => void;
+  let deferredReject: (x: any) => void;
 
   mocked.resolve = () => deferredResolve();
-  mocked.reject = () => deferredReject();
+  mocked.reject = (x: any) => deferredReject(x);
 
   mocked.default = async () => {
     return new Promise<void>((resolve, reject) => {

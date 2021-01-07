@@ -43,4 +43,15 @@ describe('SlottedPostEditor', () => {
 
     await waitFor(() => expect(queryByRole('button')).toHaveTextContent('재시도'));
   });
+
+  it('should render error message on error', async () => {
+    const error = 'error';
+    const { queryByRole, getByText } = render(SlottedPostEditor);
+    await act();
+
+    userEvent.click(queryByRole('button'));
+    reject(error);
+
+    await waitFor(() => expect(getByText('오류가 발생했습니다.')).toBeInTheDocument());
+  });
 });

@@ -1,20 +1,27 @@
 <script lang="ts">
-  import { Button, Loading, TextInput } from 'carbon-components-svelte';
+  import { Button, InlineNotification, Loading, TextInput } from 'carbon-components-svelte';
   import EditorJS from '@editorjs/editorjs';
   import tools from './editorjs-tools';
   import SlottedPostEditor from './SlottedPostEditor.svelte';
   import type Fragment from '../../../../adapters/network/posts/fragments/Fragment';
 
   let editor: EditorJS;
-  let target: HTMLElement;
+  let editorContainer: HTMLElement;
   let title: string;
 
-  $: if (target) {
+  $: if (editorContainer) {
     editor = new EditorJS({
-      holder: target,
+      holder: editorContainer,
       tools,
       minHeight: 0,
     });
+  }
+
+  function createOnTitleChange(maxLength: number): (e: Event) => void {
+    return (e) => {
+      const input = e.target as HTMLInputElement;
+      input.value = input.value.trim().substring(0, maxLength);
+    };
   }
 
   function createOnSubmit(
@@ -33,19 +40,32 @@
 </script>
 
 <SlottedPostEditor>
-  <div slot="title">
-    <TextInput light hideLabel bind:value={title} />
+  <div slot="title" let:maxLength>
+    <TextInput
+      light
+      hideLabel
+      on:input={createOnTitleChange(maxLength)}
+      bind:value={title}
+    />
   </div>
   <div slot="content" class="content">
-    <div bind:this={target} />
+    <div bind:this={editorContainer} />
   </div>
   <div slot="button" let:text let:submit>
-    <Button kind="secondary" on:click={createOnSubmit(submit)}>{text}</Button>
+    <Button kind="secondary" on:click={createOnSubmit(submit)}>
+      {text}
+    </Button>
   </div>
   <div slot="loader">
     <Button kind="secondary">
       <Loading small withOverlay={false} />
     </Button>
+  </div>
+  <div slot="error" class="error" let:error>
+    <InlineNotification
+      hideCloseButton
+      title={error}
+    />
   </div>
 </SlottedPostEditor>
 
@@ -61,5 +81,23 @@
 
   .content :global(.ce-header) {
     padding-top: 0;
+  }
+
+  .error :global(.bx--inline-notification) {
+    margin: 0;
+    max-width: none;
+  }
+
+  .error :global(.bx--inline-notification__details) {
+    width: 100%;
+  }
+
+  .error :global(.bx--inline-notification) {
+    margin: 0;
+    max-width: none;
+  }
+
+  .error :global(.bx--inline-notification__details) {
+    width: 100%;
   }
 </style>

@@ -19,13 +19,18 @@
   }
 </script>
 
-<SlottedPostEditor>
-  <div slot="title"><input bind:value={title} /></div>
-  <div slot="content"><textarea bind:value={content} /></div>
+<SlottedPostEditor let:error>
+  <div slot="title" let:maxLength>
+    <input bind:value={title} maxlength={maxLength} />
+  </div>
+  <div slot="content">
+    <textarea bind:value={content} />
+  </div>
   <div slot="button" let:submit let:text>
     <button on:click={createOnSubmit(submit)}>
       {text}
     </button>
   </div>
   <div slot="loader">로딩</div>
+  <div slot="error" let:error>{error}</div>
 </SlottedPostEditor>
