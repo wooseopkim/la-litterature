@@ -71,6 +71,10 @@
     letter-spacing: initial;
   }
 
+  .provider :global(img) {
+    max-width: 100%;
+  }
+
   .provider :global(embed) {
     width: 100%;
     height: 100%;
