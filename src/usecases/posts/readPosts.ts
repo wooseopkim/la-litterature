@@ -1,11 +1,16 @@
 import type firebase from 'firebase/app';
 import type Post from '../../adapters/network/posts/Post';
 
+const limit = 10;
+
 export default async function readPosts(
   db: firebase.firestore.CollectionReference<Post>,
+  last: firebase.firestore.Timestamp,
 ): Promise<Post[]> {
-  // TODO: add pagination logic
-  const result = await db.orderBy('created', 'desc').get();
+  const result = await db.orderBy('created', 'desc')
+    .startAfter(last)
+    .limit(limit)
+    .get();
   const posts: Post[] = [];
   result.forEach((x) => {
     const post = x.data() as Post;

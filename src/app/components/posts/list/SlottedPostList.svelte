@@ -1,29 +1,39 @@
 <script lang="ts">
+  import firebase from 'firebase/app';
   import { collections } from '../../../../adapters/network/firebase-shortcut';
+  import type Post from '../../../../adapters/network/posts/Post';
   import readPosts from '../../../../usecases/posts/readPosts';
-
+  
   const placeholderCount = 4;
   const placeholderSize = 8;
 
   export let editable = false;
-  const readPostsResult = readPosts(collections.posts);
+
+  let readPostsResult = Promise.race<Post[]>(null);
+  let posts: Post[] = [];
+
+  readMorePosts();
+  
+  function readMorePosts() {
+    const last = posts[posts.length - 1]?.created || firebase.firestore.Timestamp.now();
+    readPostsResult = readPosts(collections.posts, last)
+      .then((x) => posts = [...posts, ...x]);
+  }
 </script>
 
 <section>
   {#if editable}
     <slot name="editor">편집기</slot>
   {/if}
+  {#each posts as post}
+    <slot name="item" item={post} />
+  {/each}
   {#await readPostsResult}
     {#each new Array(placeholderCount) as _}
       <slot name="placeholder" size={placeholderSize} />
     {/each}
-  {:then posts}
-    {#each posts as post}
-      <slot name="item" item={post} />
-    {/each}
-  {:catch}
-    <!-- TODO handle error -->
   {/await}
+  <slot name="button" load={readMorePosts} />
 </section>
 
 <style>

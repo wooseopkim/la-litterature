@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SkeletonText } from 'carbon-components-svelte';
+  import { Button, SkeletonText } from 'carbon-components-svelte';
   import ComposedPostEditor from '../editor/ComposedPostEditor.svelte';
   import Post from '../item/Post.svelte';
   import SlottedPostList from './SlottedPostList.svelte';
@@ -16,5 +16,8 @@
   </div>
   <div slot="placeholder" let:size>
     <SkeletonText paragraph lines={size} />
+  </div>
+  <div slot="button" let:load>
+    <Button on:click={load}>더 불러오기</Button>
   </div>
 </SlottedPostList>

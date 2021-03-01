@@ -28,13 +28,13 @@ describe('SlottedPostList', () => {
 
   it('should render posts', async () => {
     const data = [{ title: '제목0' }, { title: '제목1' }, { title: '제목2' }];
-    const { getByText } = render(SlottedPostList, { props: defaultProps });
+    const { findByText } = render(SlottedPostList, { props: defaultProps });
 
     resolve(data);
     await act();
 
     for (const item of data) {
-      expect(getByText(item.title)).toBeInTheDocument();
+      expect(await findByText(item.title)).toBeInTheDocument();
     }
   });
 });
